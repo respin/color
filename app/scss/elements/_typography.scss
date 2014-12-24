@@ -1,0 +1,43 @@
+body {
+	color: $base-bg-color;
+	font-size: 1em;
+	font-family: $sans;
+	line-height: 1.4;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*
+	Typo
+	------------------------------------------
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $serif;
+	line-height: 1.2;
+	margin: 0;
+	margin-bottom: 1em;
+	text-rendering: optimizeLegibility;
+}
+
+
+h1 {
+	font-family: $serif;
+	font-weight: $serif-bold;
+	font-size: 2.1em;
+}
+
+
+
+/*
+	Color
+	------------------------------------------
+*/
+
+.text-white {
+	color: #fff;
+}

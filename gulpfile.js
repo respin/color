@@ -61,7 +61,7 @@ gulp.task('html', ['styles', 'scripts'], function() {
     var cssFilter = $.filter('**/*.css');
     var assets = $.useref.assets();
 
-    return gulp.src(path.app + '/build.html')
+    return gulp.src(path.app + '/index.html')
     .pipe(assets)
         // .pipe($.rev())
         .pipe(jsFilter)
@@ -121,13 +121,13 @@ gulp.task('watch', ['styles', 'serve'], function() {
         ], {}, reload);
 
     // watch to run tasks
-    gulp.watch(path.app + '/scss/**/*', ['styles']);
+    gulp.watch(path.app + '/scss/**/*.scss', ['styles']);
 });
 
 gulp.task('build', ['html', 'images', 'fonts']);
 
 gulp.task('bower', function() {
-    gulp.src(path.app + '/build.html')
+    gulp.src(path.app + '/index.html')
     .pipe(wiredep({
         exclude: [
         'bower_components/bootstrap-sass/dist/js/bootstrap.js',

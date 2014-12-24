@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>re/spin color</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/init.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/modernizr/feature-detects/css-filters.js"></script>
+    <!-- endbuild -->
+
+    <script src="//use.typekit.net/uxv2drn.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+
+    <main class="container" id="app">
+
+        <div class="u-inner align-center content">
+
+            <h1 class="text-white">Sign in to see the color</h1>
+            <button type="button" class="btn btn-rdio signin">Sign in with Rdio</button>
+
+        </div>
+
+    </main>
+
+    <!-- Album -->
+    <script id="album-template" type="text/x-handlebars-template">
+        <figure>
+            <img alt="" src="{{ icon }}" />
+        </figure>
+    </script>
+    <!-- // Album -->
+
+    <script src="https://www.rdio.com/api/api.js?client_id=Wa6idO6LnyQGrvMk9TSuUQ"></script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/backbone-localstorage/backbone-localstorage.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="bower_components/tinycolor/tinycolor.js"></script>
+    <script src="bower_components/imagesloaded/imagesloaded.pkgd.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+</body>
+
+</html>

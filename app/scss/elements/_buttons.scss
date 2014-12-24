@@ -1,0 +1,12 @@
+.btn {
+	border: 0 transparent;
+	border-radius: $base-border-radius;
+	padding: .8em 1.6em;
+	font-size: 1em;
+	font-weight: $sans-bold;
+
+	&-rdio {
+		background-color: $rdio-blue;
+		color: #fff;
+	}
+}
