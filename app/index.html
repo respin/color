@@ -27,16 +27,31 @@
 
 <body>
 
-    <main class="container" id="app">
+    <main id="app">
 
-        <div class="u-inner align-center content">
-
-            <h1 class="text-white">Sign in to see the color</h1>
-            <button type="button" class="btn btn-rdio signin">Sign in with Rdio</button>
-
+        <div class="container">
+            <div class="u-inner align-center content">
+                <h1 class="text-white">Sign in to see the color</h1>
+                <button type="button" class="btn btn-rdio signin">Sign in with Rdio</button>
+            </div>
         </div>
 
     </main>
+
+    <!-- Stage -->
+    <script id="stage-template" type="text/x-handlebars-template">
+        <header class="album-grid-header">
+            <div class="l">
+                <button class="btn btn-sm js-load-collection">Load Collection</button>
+                <button class="btn btn-sm js-load-favorites active">Load Favorites</button>
+            </div>
+            <div class="r">
+                <button class="btn btn-sm js-toggle-covers" data-state="show">Hide Covers</button>
+            </div>
+        </header>
+        <div class="album-grid"></div>
+    </script>
+    <!-- // Stage -->
 
     <!-- Album -->
     <script id="album-template" type="text/x-handlebars-template">
@@ -54,7 +69,7 @@
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
-    <script src="bower_components/backbone-localstorage/backbone-localstorage.js"></script>
+    <script src="bower_components/backbone.localStorage/backbone.localStorage.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/tinycolor/tinycolor.js"></script>
     <script src="bower_components/imagesloaded/imagesloaded.pkgd.js"></script>

@@ -2,8 +2,20 @@
 	border: 0 transparent;
 	border-radius: $base-border-radius;
 	padding: .8em 1.6em;
-	font-size: 1em;
+	font-size: 16px;
 	font-weight: $sans-bold;
+
+	&:active,
+	&:focus {
+		box-shadow: none;
+		outline: none;
+	}
+
+	&-sm {
+		font-size: 13px;
+		font-weight: $sans-normal;
+		padding: .5em 1.2em;
+	}
 
 	&-rdio {
 		background-color: $rdio-blue;

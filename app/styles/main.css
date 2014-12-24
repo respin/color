@@ -336,7 +336,7 @@ table {
 td, th {
   padding: 0; }
 
-html, body {
+html, body, main {
   height: 100%;
   padding: 0;
   margin: 0; }
@@ -367,7 +367,10 @@ body {
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+          align-self: stretch; }
 
 .content {
   margin-left: auto;
@@ -382,6 +385,25 @@ body {
 	Albums
 	------------------------------------------
 */
+.album-grid-header {
+  padding: 1em;
+  overflow: hidden; }
+  .album-grid-header .btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.75); }
+    .album-grid-header .btn.active {
+      background: #fff;
+      border-color: #fff;
+      color: #222; }
+  .album-grid-header .l {
+    float: left; }
+    .album-grid-header .l .btn {
+      margin-right: 0.5em; }
+  .album-grid-header .r {
+    float: right; }
+
 .album-grid {
   display: block;
   height: auto;
@@ -459,8 +481,15 @@ h1 {
   border: 0 transparent;
   border-radius: 4px;
   padding: 0.8em 1.6em;
-  font-size: 1em;
+  font-size: 16px;
   font-weight: 600; }
+  .btn:active, .btn:focus {
+    box-shadow: none;
+    outline: none; }
+  .btn-sm {
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0.5em 1.2em; }
   .btn-rdio {
     background-color: #109EDC;
     color: #fff; }

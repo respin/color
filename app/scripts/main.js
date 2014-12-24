@@ -18,10 +18,9 @@ var AlbumList = Backbone.Collection.extend({
 
     model: Album,
 
-    // localStorage: new Backbone.LocalStorage("respin-color"),
-    //
+    // localStorage: new Backbone.LocalStorage("Albums"),
 
-    sortKey: 'hue',
+    sortKey: 'colorsum', // 'hue'
 
     comparator: function(a, b) {
         a = a.get(this.sortKey);
@@ -29,12 +28,14 @@ var AlbumList = Backbone.Collection.extend({
         return a > b;
     },
 
+    fetchMethod: 'getFavorites', // 'getAlbumsInCollection',
+
     fetch: function() {
 
         var that = this;
 
         R.request({
-            method: "getAlbumsInCollection", // 'getFavorites'
+            method: that.fetchMethod,
             content: {
                 types: "tracksAndAlbums",
                 extras: 'dominantColor,icon400'
@@ -133,33 +134,81 @@ var AppView = Backbone.View.extend({
 
     el: $("#app"),
 
-    events: {
+    tag: 'div',
 
+    template: Handlebars.compile($("#stage-template").html()),
+
+    events: {
+        'click .js-load-collection': 'loadCollection',
+        'click .js-load-favorites': 'loadFavorites',
+        'click .js-toggle-covers': 'toggleCovers'
     },
 
     initialize: function() {
         this.listenTo(Albums, 'reset', this.addAll);
-        this.listenTo(Albums, 'all', this.render);
+        // this.listenTo(Albums, 'all', this.render);
+
+        this.render();
+        this.$grid = this.$el.find('.album-grid');
+        this.$grid.hide();
 
         Albums.fetch();
     },
 
     render: function() {
-        this.$el.addClass('album-grid');
+        this.$el.html(this.template({}));
+        return this;
     },
 
     addOne: function(album) {
         var view = new AlbumView({
             model: album
         });
-        this.$el.append(view.render().el);
+
+        this.$grid.append(view.render().el);
     },
 
     addAll: function() {
-        this.$el.empty();
         Albums.each(this.addOne, this);
+        this.$grid.fadeIn(500);
+    },
 
-        // this.$el.find('.album').addClass('album--loaded');
+    loadCollection: function(e) {
+
+        if(!$(e.currentTarget).hasClass('active')) {
+        	this.$grid.fadeOut(300);
+        	$(e.currentTarget).addClass('active').siblings().removeClass('active');
+        	Albums.fetchMethod = 'getAlbumsInCollection';
+        	Albums.fetch();
+        }
+    },
+
+    loadFavorites: function(e) {
+
+    	if(!$(e.currentTarget).hasClass('active')) {
+        	this.$grid.fadeOut(300);
+        	$(e.currentTarget).addClass('active').siblings().removeClass('active');
+        	Albums.fetchMethod = 'getFavorites';
+        	Albums.fetch();
+        }
+    },
+
+    toggleCovers: function(e) {
+
+    	var $btn = $(e.currentTarget);
+
+    	if($btn.data('state') === 'show') {
+    		$btn.data('state', 'hide');
+    		$btn.addClass('active');
+    		$btn.text('Show Covers');
+    		this.$grid.find('.album').removeClass('album--loaded');
+    	} else {
+    		$btn.data('state', 'show');
+    		$btn.removeClass('active');
+    		$btn.text('Hide Covers');
+    		this.$grid.find('.album').addClass('album--loaded');
+    	}
+
     }
 
 });

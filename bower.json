@@ -23,8 +23,8 @@
     "underscore": "~1.7.0",
     "handlebars": "~2.0.0",
     "normalize-scss": "~3.0.2",
-    "backbone-localstorage": "~0.3.2",
     "tinycolor": "~1.1.1",
-    "imagesloaded": "~3.1.8"
+    "imagesloaded": "~3.1.8",
+    "backbone.localStorage": "~1.1.14"
   }
 }
